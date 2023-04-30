@@ -6,3 +6,7 @@ A python package used to load LUX, acceleration data from gt3x file
 ```bash
 pip install git+https://github.com/AlexMa123/py_gt3x
 ```
+
+## Example
+
+See [example.ipynb](https://github.com/AlexMa123/py_gt3x/blob/main/example.ipynb)
