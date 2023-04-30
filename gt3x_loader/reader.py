@@ -81,9 +81,9 @@ class GT3XReader:
 
         try:
             if len(self.datas[0][-1]) != len(self.datas[0][0]):
-                actigraphy = b''.join(self.datas[0][:-1])
-            else:
-                actigraphy = b''.join(self.datas[0])
+                self.datas[0].pop()
+                self.times[0].pop()
+            actigraphy = b''.join(self.datas[0])
             actigraphy = read_uint12(actigraphy)
             index = np.where(actigraphy > 2047)
             actigraphy[index] = np.bitwise_or(actigraphy[index], 0xF000)
@@ -123,8 +123,7 @@ class GT3XReader:
             i = data_types.index(signalname)
         except Exception:
             raise KeyError("Signal not found, Only has the following signals: ", self.signalnames())
-        return self.times[i]
- 
+        return np.array(self.times[i])
 
 
 if __name__ == "__main__":
